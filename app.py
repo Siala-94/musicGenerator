@@ -8,7 +8,7 @@ from dash.dependencies import Input, Output, State
 def generate(input_text):
     encoded_input = tokenizer.encode(input_text, return_tensors="pt")
     generated_output = model.generate(
-        encoded_input, max_length=700, num_beams=7, do_sample=True, temperature=0.8, early_stopping=True)
+        encoded_input, max_length=700, num_beams=7, early_stopping=True)
     generated_lyrics = tokenizer.decode(
         generated_output[0], skip_special_tokens=True)
     return generated_lyrics
